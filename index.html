@@ -36,8 +36,6 @@
 				document.getElementById("correct").style.display = "block";
 				total += (num1+num2)*10;
 				document.getElementById("num").innerHTML = total.toString();
-				var snd = new Audio("audio/cheer.m4a"); // buffers automatically when created
-				snd.play();
 				setTimeout(function () {
 					document.getElementById("correct").style.display = "none";
 					document.getElementById("answer").value = "";
