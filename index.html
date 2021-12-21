@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Math Trainer</title>
+  <meta name="description" content="Simple math fact training">
+
+</head>
+
+<body onload="gen()">
+	<h1 id="correct" style="color:green;display:none;">Correct!!</h1>
+	<h1 id="incorrect" style="color:red;display:none;">Incorrect, give it another shot!</h1>
+	<p><span id="num" style="color:green;">0</span> correct</p>
+  <h1><span id="num1"></span> + <span id="num2"></span></h1>
+  <input type="number" id="answer">
+  <button id="submitAnswer" onclick="submit()">Submit</button>
+  <script>
+	  let total = 0;
+	  let num1;
+	  let num2;
+	  
+		function gen() {
+			num1 = Math.floor(Math.random() * 10) + 1;
+			num2 = Math.floor(Math.random() * 10) + 1;
+			document.getElementById("num1").innerHTML = num1.toString();
+			document.getElementById("num2").innerHTML = num2.toString();
+		}
+
+	  function submit() {
+			if (!document.getElementById("answer").value) {
+
+			} else if(parseInt(document.getElementById("answer").value) === num1+num2) {
+				document.getElementById("correct").style.display = "block";
+				total++;
+				document.getElementById("num").innerHTML = total.toString();
+				//var snd = new Audio("file.wav"); // buffers automatically when created
+				//snd.play();
+				setTimeout(function () {
+					document.getElementById("correct").style.display = "none";
+					document.getElementById("answer").value = "";
+					gen();
+				}, 1500);
+			} else {
+				document.getElementById("incorrect").style.display = "block";
+				setTimeout(function () {
+					document.getElementById("incorrect").style.display = "none";
+					document.getElementById("answer").value = "";
+				}, 1500);
+			}
+	  }
+  </script>
+</body>
+</html>
