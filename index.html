@@ -13,7 +13,7 @@
 <body onload="gen()">
 	<h1 id="correct" style="color:green;display:none;">Correct!!</h1>
 	<h1 id="incorrect" style="color:red;display:none;">Incorrect, give it another shot!</h1>
-	<p><span id="num" style="color:green;">0</span> correct</p>
+	<p><span id="num" style="color:green;">0</span> points!</p>
   <h1><span id="num1"></span> + <span id="num2"></span></h1>
   <input type="number" id="answer">
   <button id="submitAnswer" onclick="submit()">Submit</button>
@@ -34,10 +34,10 @@
 
 			} else if(parseInt(document.getElementById("answer").value) === num1+num2) {
 				document.getElementById("correct").style.display = "block";
-				total++;
+				total += (num1+num2)*10;
 				document.getElementById("num").innerHTML = total.toString();
-				//var snd = new Audio("file.wav"); // buffers automatically when created
-				//snd.play();
+				var snd = new Audio("cheer.m4a"); // buffers automatically when created
+				snd.play();
 				setTimeout(function () {
 					document.getElementById("correct").style.display = "none";
 					document.getElementById("answer").value = "";
